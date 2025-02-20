@@ -1,10 +1,10 @@
 Senior Project Proposal (Replace with Project Name)
 ===================================================
 
-**Student Name**: Ada Lovelace (put your name here followed by two spaces)  
-**Degree and Major**: B.S. in Cybersecurity (put your name here followed by two spaces)  
-**Project Advisor Name**: Dr. Faulkner (put your name here followed by two spaces)  
-**Expected Graduation Date**: May 2040 (put the correct month and day here)
+**Student Name**: Whitney Carpenter
+**Degree and Major**: B.S. in Cybersecurity  
+**Project Advisor Name**: Dr. Sean Hayes  
+**Expected Graduation Date**: May 2026
 
 
 Problem Statement
