@@ -1,4 +1,4 @@
-Senior Project Proposal (Replace with Project Name)
+SecurePass
 ===================================================
 
 **Student Name**: Whitney Carpenter  
@@ -16,7 +16,7 @@ The problem statement goes here.
 Project Description
 -------------------
 
-The project description goes here.
+The aim of this project is to develop a user-friendly Chrome extension that evaluates the strength of passwords.  The extension will provide instant feedback on the security level of passwords entered by users, including criteria such as length, complexity, and entropy.  It will offer suggestions to enhance password strength after analyzing the complexity of the password entered.  To ensure privacy and security, all password evaluations will be performed locally within the extension, and no information will leave the extension.  The project will involve researching password security standards, designing an intuitive user interface, and conducting thorough testing to ensure functionality across different platforms.
 
 
 Proposed Implementation Language(s) 
@@ -51,7 +51,7 @@ Schedule
 
 (Update the dates and add your tasks by replacing the examples. Remove this note.)
 
-*   Spring 2039 - CSCI 497
+*   Spring 2025 - CSCI 497
     -   January 26 - 
     -   February 9 - 
     -   February 23 - 
@@ -59,10 +59,10 @@ Schedule
     -   March 22 - Send First-Draft of the Requirements Document to advisor for feedback
     -   April 5 - 
 
-*   Summer 2040 - Independent/Optional Project Work
+*   Summer 2025 - Independent/Optional Project Work
     -   June 1 - 
 
-*   Fall 2039 - CSCI 498
+*   Fall 2025 - CSCI 498
     -   October 20 - 
     -   October 27 - 
     -   November 3 - 
@@ -70,7 +70,7 @@ Schedule
     -   November 17 - 
     -   November 20 - 
 
-*   Spring 2040 - CSCI 499 (more detail will be added here once you are closer)
+*   Spring 2026- CSCI 499 (more detail will be added here once you are closer)
     -   Weeks 1-4 - Implement test plan
     -   Week 5 - Evaluate test results
     -   Week 6-10 - Apply updates and bug fixes based on the results
