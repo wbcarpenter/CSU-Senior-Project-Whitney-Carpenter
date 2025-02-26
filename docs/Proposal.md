@@ -10,8 +10,9 @@ SecurePass
 Problem Statement
 -----------------
 
-The problem statement goes here.
+A user-friendly extension to evaluate password strength and provide instant feedback will enhance online security and protect user privacy. Ideally, users would create strong, complex passwords adhering to the highest security standards; however, many struggle with this, opting for simple, reused passwords. This is a critical issue as weak passwords create significant security risks, including hacking attempts, data breaches, and identity theft, potentially leading to financial loss, privacy invasion, and reputational damage. According to the Verizon Data Breach Investigations Report¹, 81% of hacking-related breaches involve compromised and weak passwords. Using a user-friendly Chrome extension to evaluate password strength will significantly mitigate these risks.  Users stand to benefit substantially from this extension in the form of enhanced security and the support of their right to privacy.  Weak passwords are a major security risk that can lead to significant consequences, but by developing a user-friendly Chrome extension that evaluates password strength and provides instant, local feedback, we can help users create stronger passwords, enhance their online security, and protect their privacy.
 
+    ¹ Verizon. (2024). Data Breach Investigations Report. Retrieved from https://www.verizon.com/business/resources/T484/reports/2024-dbir-data-breach-investigations-report.pdf. 
 
 Project Description
 -------------------
