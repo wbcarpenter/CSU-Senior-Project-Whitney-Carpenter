@@ -23,8 +23,8 @@ The aim of this project is to develop a user-friendly Chrome extension that eval
 Proposed Implementation Language(s) 
 -----------------------------------
 
-JavaScript
-HTML
+JavaScript  
+HTML  
 CSS
 
 Libraries, Packages, Development Kits, etc. to be used in the proposed implementation languages(s)
@@ -36,7 +36,7 @@ Chrome Extensions API
 Additional Software/Equipment Needed
 ------------------------------------
 
-Hardware: Windows
+Hardware: Windows  
 Software: Visual Studio Code, Chrome Browser
 
 Personal Motivation
