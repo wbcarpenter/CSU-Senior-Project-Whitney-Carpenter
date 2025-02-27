@@ -53,10 +53,18 @@ Outline of Future Research Efforts
 2. Chrome Extension Development  
     - I will learn how to build a Chrome extension using JavaScript, HTML, and CSS.  
     - I will research how to integrate the Chrome Extensions API for real-time interaction with password fields.  
-    - I will research best practices for UI/UX design to ensure the extension is effective.  
-3. Ensuring Security and Privacy  
+    - I will research best practices for UI/UX design to ensure the extension is effective.
+3. Developing and Testing the Algorithm  
+    - I will implement an algorithm that evaluates password strength.  
+    - I will optimize the algorithm to provide instant feedback.  
+    - I will extensively test the extension on various platforms and websites to ensure compatibility and accuracy.  
+4. Ensuring Security and Privacy  
     - I will do research to figure out all the measures I will take to ensure all password evaluations occur locally without storing or transmitting data.  
-    - I will research potential security risks associated with browser extensions and mitigate vulnerabilities.
+    - I will research potential security risks associated with browser extensions and mitigate vulnerabilities.  
+5. User Testing and Feedback  
+    - I will conduct usability testing to assess the effectiveness of the extension's feedback system.  
+    - I will gather user feedback and refine the design to improve clarity and functionality.
+    - I will ensure the extension provides actionable recommendations without overwhelming the average user.
 
 Schedule
 --------
