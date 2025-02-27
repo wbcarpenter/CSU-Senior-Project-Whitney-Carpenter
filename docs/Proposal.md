@@ -42,12 +42,21 @@ Software: Visual Studio Code, Chrome Browser
 Personal Motivation
 -------------------
 
-Personal motivation goes here.
+Developing a user-friendly password evaluation extension is very important to me
 
 Outline of Future Research Efforts
 ----------------------------------
 
-(What do you need to learn or figure out to complete this project? What tasks are you going to do the do that?)
+1. Password Security Standards  
+    - I will study the NIST guidelines and other best practices for password security.  
+    - I will research commonly used password strength metrics, including entropy calculations and complexity requirements.  
+2. Chrome Extension Development  
+    - I will learn how to build a Chrome extension using JavaScript, HTML, and CSS.  
+    - I will research how to integrate the Chrome Extensions API for real-time interaction with password fields.  
+    - I will research best practices for UI/UX design to ensure the extension is effective.  
+3. Ensuring Security and Privacy  
+    - I will do research to figure out all the measures I will take to ensure all password evaluations occur locally without storing or transmitting data.  
+    - I will research potential security risks associated with browser extensions and mitigate vulnerabilities.
 
 Schedule
 --------
