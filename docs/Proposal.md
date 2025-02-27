@@ -61,15 +61,13 @@ Outline of Future Research Efforts
 Schedule
 --------
 
-(Update the dates and add your tasks by replacing the examples. Remove this note.)
-
 *   Spring 2025 - CSCI 497
-    -   January 26 - 
-    -   February 9 - 
-    -   February 23 - 
-    -   March 8 - 
-    -   March 22 - Send First-Draft of the Requirements Document to advisor for feedback
-    -   April 5 - 
+    -   February 27 - Send First-Draft of Proposal to advisor for feedback
+    -   February 28 - Start generating requirements ideas
+    -   March 3 - Submit First-Draft of Proposal on Blackboard
+    -   March 24 - Form First-Draft of Requirements Document
+    -   April 5 - Send First-Draft of the Requirements Document to advisor for feedback
+    -   April 15 - Submit Final Draft of Proposal and Requirements Document on Blackboard
 
 *   Summer 2025 - Independent/Optional Project Work
     -   June 1 - 
