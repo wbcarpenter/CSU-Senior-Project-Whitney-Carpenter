@@ -38,8 +38,8 @@ Bootstrap
 Additional Software/Equipment Needed
 ------------------------------------
 
-Hardware: Windows  
-Software: Visual Studio Code, Chrome Browser
+Hardware: Windows PC, Linux  
+Software: Visual Studio Code, Chrome Browser, Chrome Developer Tools, Node.js, Git & GitHub
 
 Personal Motivation
 -------------------
