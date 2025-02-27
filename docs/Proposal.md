@@ -42,7 +42,7 @@ Software: Visual Studio Code, Chrome Browser
 Personal Motivation
 -------------------
 
-Developing a user-friendly password evaluation extension is very important to me
+Developing a user-friendly password evaluation extension is very important to me because cybersecurity is a field that directly impacts everyone's privacy and security in the digital world.  Weak passwords are one of the most common vulnerabilities that lead to security breaches, and I have seen firsthand that many users struggle with creating strong passwords due to a lack of guidance and instruction.  By designing this Chrome extension, I aim to bridge this gap by providing an accessible and effective tool tha helps users develop stronger passwords.  This project aligns with my passion for cybersecurity and desire to help others that are not in this field to have access to practical security solutions.  
 
 Outline of Future Research Efforts
 ----------------------------------
