@@ -30,8 +30,10 @@ CSS
 Libraries, Packages, Development Kits, etc. to be used in the proposed implementation languages(s)
 --------------------------------------------------------------------------------------------------
 
-Chrome Extensions API
-
+Chrome Extensions API  
+Zxcvbn  
+Lodash  
+Bootstrap
 
 Additional Software/Equipment Needed
 ------------------------------------
