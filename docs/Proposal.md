@@ -80,15 +80,14 @@ Schedule
     -   April 15 - Submit Final Draft of Proposal and Requirements Document on Blackboard
 
 *   Summer 2025 - Independent/Optional Project Work
-    -   June 1 - 
 
 *   Fall 2025 - CSCI 498
-    -   October 20 - 
-    -   October 27 - 
-    -   November 3 - 
-    -   November 10 - 
-    -   November 17 - 
-    -   November 20 - 
+    -   Week 1 - Meet with Profesor
+    -   Weeks 2-4 - Research
+    -   Weeks 5-7 - Create Extension and Implement Algorithm
+    -   Weeks 8-10 - Test Algorithm
+    -   Weeks 11-12 - User Testing and Feedback
+    -   Weeks 13-15 - Refactor based on feedback and fix bugs
 
 *   Spring 2026- CSCI 499 (more detail will be added here once you are closer)
     -   Weeks 1-4 - Implement test plan
