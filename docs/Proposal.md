@@ -82,7 +82,7 @@ Schedule
 *   Summer 2025 - Independent/Optional Project Work
 
 *   Fall 2025 - CSCI 498
-    -   Week 1 - Meet with Profesor
+    -   Week 1 - Meet with Professor
     -   Weeks 2-4 - Research
     -   Weeks 5-7 - Create Extension and Implement Algorithm
     -   Weeks 8-10 - Test Algorithm
