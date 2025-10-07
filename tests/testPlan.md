@@ -39,6 +39,7 @@ The objective of this test plan is to verify that SecurePass meets all defined r
 | 7 | Performance and responsiveness | Req. 9, 12 | Confirms low CPU/memory usage |
 | 8 | Chrome Compatibility | Req. 8, 14 | Verifies extension integrates smoothly with Chrome |
 | 9 | Security Compliance | Req. 10, 20 | Meets NIST guidelines and cybersecurity best practices |
+| 10 | Automatic activation and availability | Req. 11 | Confirms the extension loads automatically when Chrome is active |
 
 ---
 
@@ -98,6 +99,7 @@ Integration testing ensures that the extension modules interact correctly with e
 |---|-----------|-------|------------------|-------------------|
 | 1 | Verify Chrome API integration | Password field detected | Feedback overlay appears | Integration report |
 | 2 | Test interaction between UI and algorithm | "StrongPass!23" | Correct strength and suggestions displayed | Integration report |
+| 3 | Confirm extension remains active during standard browser use | Perform typical browser activities | The extension remains available until Chrome closes or updates | Test observation notes |
 
 ---
 
