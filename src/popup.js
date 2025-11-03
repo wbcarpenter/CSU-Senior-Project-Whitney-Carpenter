@@ -34,8 +34,8 @@ function evaluatePassword(password) {
 
 function displayResults({ label, suggestions }) {
   document.getElementById("strength").textContent = label;
-  const suggestionsEl = document.getElementById("suggestions");
-  suggestions El.innerHTML = suggestions.length
+  const suggestionsE1 = document.getElementById("suggestions");
+  suggestions E1.innerHTML = suggestions.length
     ? <strong>Suggestions:</strong><ul>${suggestions.map(s => `<li>${s}</li>`).join("")}</ul>`
     : "Looks great!";
 }
