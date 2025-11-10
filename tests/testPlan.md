@@ -53,84 +53,92 @@ The objective of this test plan is to verify that SecurePass meets all defined r
 
 ---
 
-## UNIT TEST
+## UNIT TESTING
 
-### **UNIT TEST STRATEGY / EXTENT OF UNIT TESTING**
-Unit testing will verify the correct behavior of individual components such as: 
-- Password strength evaluation algorithm
-- Feedback rendering module
-- Suggestion generation function
+### **Unit Test Strategy and Objectives**
+Unit testing will verify the correct behavior of individual components within SecurePass. The goal is to ensure that each function operates as intended before integration. 
 
-**Test Environment:**
+### Scope
+- **Included:**
+  - Password strength evaluation algorithm
+  - Feedback rendering module
+  - Suggestion generation function
+- **Excluded:**
+  - Chrome API integrations
+  - Full user interface layout
+  - External data transmission
+
+### Testing Approach
+- Use **Jest** or **Mocha** for automated JavaScript testing.
+- Execute all tests in a **local offline environment** to verify no network communication.
+- Evaluate both normal and edge case passwords for accuracy and consistency.
+- Record results in unit test logs with pass/fail indicators.
+
+### Test Environment
 **Hardware:** Windows 10 / 11 PC, 8GB RAM minimum
 **Software:** Chrome Browser (latest version), Visual Studio Code, Node.js
 **Network:** Local environment, offline tests where possible
-
----
 
 ### **UNIT TEST CASES**
 
 | # | Objective | Input | Expected Results | Test Deliverables |
 |---|-----------|-------|------------------|-------------------|
-| 1 | Verify weak password detection | "password123" | Rated as Weak | Unit test report |
-| 2 | Verfiy strong password detection | "L!m@x#9Qz2" | Rated as Strong | Unit test report |
-| 3 | Check suggestion display | "123456" | Displays suggestions for improvement | Unit test report |
-| 4 | Confirm no network calls | Random passwords | No network activity recorded | Browser dev tools log |
+| 1 | Verify weak password detection | "password123" | Strength: Weak | Unit test report |
+| 2 | Verfiy strong password detection | "L!m@x#9Qz2" | Strength: Strong | Unit test report |
+| 3 | Handle long input efficiently | 256-character random string | Strength: Strong | Performance log |
+| 4 | Check suggestion display | "123456" | Displays suggestions for improvement | Unit test report |
+| 5 | Confirm no network calls | Random passwords | No network activity recorded | Browser dev tools log |
+| 6 | Handle special characters | "pä$$WørD!" | Strength: Medium | Unit test report |
+
+### Acceptance Criteria
+- 100% of unit test cases must pass before integration begins.
+- All password evaluations must occur locally with no external network activity.
+- Feedback must appear within **2 seconds** of password entry.
 
 ---
 
-### **Regression Test Cases**
+## USER-ACCEPTANCE TESTING (UAT)
 
-| # | Objective | Input | Expected Results | Observed |
-|---|-----------|-------|------------------|-------------------|
-| 1 | Verify previously working strength evaluation | "Secure123!" | Displays consistent "Medium" rating | TBD |
-| 2 | Check UI remains responsive | User enters password quickly | Feedback updates smoothly | TBD |
+### User-Acceptance Test Strategy and Objectives
+User-Acceptance Testing (UAT) will ensure that SecurePass is intuitive, responsive, and educational for end users.  It evaluates how effectively users understand and interact with password feedback.
 
----
+### Scope
+- Focuses on usability, speed, and clarity of password feedback.
+- Excludes performance benchmarking and Chrome API verification
 
-## INTEGRATION TEST
+### Participants
+- 5-10 users, including cybersecurity students and non-technical participants.
 
-### **Integration Test Strategy and Extent of Integration Testing**
-Integration testing ensures that the extension modules interact correctly with each other and with the Chrome environment (e.g., detecting password fields, displaying overlay feedback).
+### Test Environment
+- **Platform:** Chrome browser
+- **Operating System:** Windows 10/11
+- **Location:** Controlled lab or classroom environment
+- **Monitoring:** Observation and short feedback surveys
 
-### **Integration Test Cases**
+### UAT Procedure
+1. Install SecurePass in Chrome.
+2. Create various passwords to test the strength feedback.
+3. Observe speed, clarity, and understanding of results.
+4. Complete a post-test survey using a 5-point Likert scale on usability and understanding.
 
-| # | Objective | Input | Expected Results | Test Deliverables |
-|---|-----------|-------|------------------|-------------------|
-| 1 | Verify Chrome API integration | Password field detected | Feedback overlay appears | Integration report |
-| 2 | Test interaction between UI and algorithm | "StrongPass!23" | Correct strength and suggestions displayed | Integration report |
-| 3 | Confirm extension remains active during standard browser use | Perform typical browser activities | The extension remains available until Chrome closes or updates | Test observation notes |
-
----
-
-## USER-ACCEPTANCE TEST (UAT)
-
-### **User-Acceptance Test Strategy***
-User-Acceptance Testing (UAT) will involve a group of 5-10 users (non-technical and cybersecurity students) testing the extension for clarity, speed, and usability.
-Methods:
-- Observation and feedback survey
-- Task-based testing (create passwords, interpret feedback)
-- Post-test questionnaire (Likert scale for usability and understanding)
-
----
-
-### **User-Acceptance Test Cases**
+### User-Acceptance Test Cases
 
 | # | Test Item | Expected Results | Actual Results | Date |
 |---|-----------|------------------|----------------|------|
-| 1 | Evaluate clarity of feedback | 90% of users understand feedback without guidance | TBD | TBD |
-| 2 | Evaluate educational tips | 90% of users report increased awareness of password security | TBD | TBD |
-| 3 | Test installation ease | Installed and functional within 2 minutes | TBD | TBD |
+| 1 | User creates a weak password | Receives “Weak” rating with clear improvement tips | TBD | TBD |
+| 2 | User creates a strong password | Receives “Strong” rating, no extra tips shown | TBD | TBD |
+| 3 | Evaluate clarity of feedback | 90% of users understand feedback without guidance | TBD | TBD |
+| 4 | Evaluate educational tips | 90% of users report increased awareness of password security | TBD | TBD |
+| 5 | Test installation ease | Installed and functional within 2 minutes | TBD | TBD |
+| 6 | Test performance and speed | Feedback appears within 2 seconds | TBD | TBD |
 
 ---
 
 ## TEST DELIVERABLES
 
 - SecurePass Test Plan
-- Unit Test Scripts
-- Integration Test Logs
-- Regression Test Reports
-- User Acceptance Testing Reports
+- Unit Test Scripts and Logs
+- User Acceptance Testing Forms and Reports
 - Defect/Enhancement Logs
 - Final Test Summary Report
 
