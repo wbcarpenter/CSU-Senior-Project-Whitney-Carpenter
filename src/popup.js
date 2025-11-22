@@ -1,8 +1,26 @@
-document.getElementById("checkBtn").addEventListener("click", () => {
-  const password = document.getElementById("passwordInput").value;
-  const strength = strength = evaluatePassword(password);
-  displayResults(strength);
+console.log("Popup script loaded!");
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadLastResult();
+  loadHistory();
+  const checkBtn = document.getElementById("checkBtn");
+  const passwordInput = document.getElementById("passwordInput");
+  const clearHistoryBtn = document.getElementById("clearHistory");
+
+  checkBtn.addEventListener("click", () => {
+    const password = passwordInput.value;
+    const result = evaluatePassword(password);
+    displayResults(result);
+    saveResult(result.label, result.suggestions);
+    saveToHistory(password, result.label);
+    loadHistory();
+  });
+
+  clearHistoryBtn.addEventListener("click", () => {
+    chrome.storage.local.set({ history: [] }, loadHistory);
+  });
 });
+
 
 function evaluatePassword(password) {
   let score = 0;
@@ -34,8 +52,80 @@ function evaluatePassword(password) {
 
 function displayResults({ label, suggestions }) {
   document.getElementById("strength").textContent = label;
-  const suggestionsE1 = document.getElementById("suggestions");
-  suggestions E1.innerHTML = suggestions.length
-    ? <strong>Suggestions:</strong><ul>${suggestions.map(s => `<li>${s}</li>`).join("")}</ul>`
+  const suggestionsEl = document.getElementById("suggestions");
+
+  suggestionsEl.innerHTML = suggestions.length
+    ? `<strong>Suggestions:</strong><ul>${suggestions.map(s => `<li>${s}</li>`).join("")}</ul>`
     : "Looks great!";
+}
+
+function saveResult(label, suggestions) {
+  chrome.storage.local.set(
+    {
+      lastStrength: label,
+      lastSuggestions: suggestions,
+      lastCheckedAt: new Date().toISOString()
+    },
+    () => console.log("Password result saved!")
+  );
+}
+
+function loadLastResult() {
+  chrome.storage.local.get(
+    ["lastStrength", "lastSuggestions", "lastCheckedAt"],
+    (data) => {
+      if (data.lastStrength) {
+        document.getElementById("strength").textContent = data.lastStrength;
+
+        const suggestionsEl = document.getElementById("suggestions");
+
+        if (data.lastSuggestions && data.lastSuggestions.length > 0) {
+          suggestionsEl.innerHTML =
+            `<strong>Previous Suggestions:</strong><ul>${data.lastSuggestions
+              .map(s => `<li>${s}</li>`)
+              .join("")}</ul>`
+
+        } else {
+          suggestionsEl.textContent = "Looks great (previous check)!";
+        }
+      }
+    }
+  );
+}
+
+function maskPassword(pwd) {
+  if (pwd.length <= 2) return "*".repeat(pwd.length);
+  return pwd[0] + "*".repeat(pwd.length - 2) + pwd[pwd.length - 1];
+}
+
+function saveToHistory(password, label) {
+  chrome.storage.local.get(["history"], (data) => {
+    const history = data.history || [];
+
+    history.push({
+      masked: maskPassword(password),
+      strength: label,
+      time: new Date().toLocaleString()
+    });
+
+    chrome.storage.local.set({ history });
+  });
+}
+
+function loadHistory() {
+  chrome.storage.local.get(["history"], (data) => {
+    const list = document.getElementById("historyList");
+    list.innerHTML = "";
+
+    const history = data.history || [];
+
+    history.forEach(entry => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <strong>${entry.masked}</strong> — ${entry.strength} <br>
+        <small>${entry.time}</small>
+      `;
+      list.appendChild(li);
+    });
+  });
 }

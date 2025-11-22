@@ -1,28 +1,46 @@
 {
   "manifest_version": 3,
   "name": "SecurePass",
-  "description": "A user-friendly Chrome extension that evaluates password strength locally and provides improvement suggestions.",
+  "description": "A user-friendly Chrome extension that evaluates password strength locally, provides improvement suggestions, and stores their history of masked passwords.",
   "version": "1.0",
   "author": "Whitney Carpenter",
-
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
+      "128": "icons/lock.png"
     }
   },
 
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "128": "icons/lock.png"
   },
 
   "permissions": [
     "storage",
     "activeTab",
     "scripting"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["bubble.js"],
+      "css": ["bubble.css"]
+    }
+  ],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/lock.png"],
+      "matches": ["<all_urls>"]
+    }
   ]
 }

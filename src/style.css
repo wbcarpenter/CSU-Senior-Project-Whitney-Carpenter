@@ -20,14 +20,15 @@ input {
 button {
   width: 100%;
   padding: 6px;
-  background-color: blue;
-  color: black;
+  margin-top: 6px;
+  background-color: rgb(73, 73, 211);
+  color: white;
   border: none;
   border-radius: 4px;
 }
 
 button:hover {
-  background-color: dark blue;
+  background-color: dark lightblue;
 }
 
 #result {
@@ -35,5 +36,18 @@ button:hover {
 }
 
 #strength {
-  font-wight: bold;
+  font-weight: bold;
+}
+
+#historyList {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+#historyList li {
+  background: #f0f0f8;
+  padding: 6px;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  font-size: 14px;
 }
