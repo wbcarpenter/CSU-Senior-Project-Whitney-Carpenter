@@ -29,7 +29,9 @@
     {
       "matches": ["<all_urls>"],
       "js": ["bubble.js"],
-      "css": ["bubble.css"]
+      "css": ["bubble.css"],
+      "run_at": "document_idle",
+      "all_frames": true
     }
   ],
 

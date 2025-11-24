@@ -1,4 +1,5 @@
 (function () {
+	console.log("SecurePass content script loaded");
 	let bubble;
 
 	function createBubble() {
@@ -26,7 +27,9 @@
 	}
 
 	function checkForPasswordFields() {
+		console.log("Checking for password field...");
 		const hasPassword = document.querySelector("input[type='password']");
+		console.log("Found password:", !!hasPassword);
 		if (hasPassword) createBubble();
 		else removeBubble();
 	}
