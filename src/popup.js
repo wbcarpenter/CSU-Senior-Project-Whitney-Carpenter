@@ -7,12 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordInput = document.getElementById("passwordInput");
   const clearHistoryBtn = document.getElementById("clearHistory");
 
-  checkBtn.addEventListener("click", () => {
+  checkBtn.addEventListener("click", async () => {
     const password = passwordInput.value;
     const result = evaluatePassword(password);
-    displayResults(result);
+    displayResults(password, result);
+    const hash = await hashPassword(password);
+    if (COMMON_PASSWORD_HASHES.has(hash)) {
+      result.label = "Very Weak";
+      result.suggestions.push("This password is extremely common and easily guessed.");
+    }
     saveResult(result.label, result.suggestions);
-    saveToHistory(password, result.label);
+    saveToHistory(hash, result.label, password.length);
     loadHistory();
   });
 
@@ -20,6 +25,19 @@ document.addEventListener("DOMContentLoaded", () => {
     chrome.storage.local.set({ history: [] }, loadHistory);
   });
 });
+
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray
+    .map(byte => byte.toString(16).padStart(2, "0"))
+    .join("");
+  return hashHex;
+}
 
 
 function evaluatePassword(password) {
@@ -50,13 +68,37 @@ function evaluatePassword(password) {
   return {label, suggestions };
 }
 
-function displayResults({ label, suggestions }) {
-  document.getElementById("strength").textContent = label;
+function displayResults(password, { label, suggestions }) {
+  const strengthE1 = document.getElementById("strength");
   const suggestionsEl = document.getElementById("suggestions");
+  const bar = document.getElementById("entropyBar");
+  const entropyValue = document.getElementById("entropyValue");
 
-  suggestionsEl.innerHTML = suggestions.length
-    ? `<strong>Suggestions:</strong><ul>${suggestions.map(s => `<li>${s}</li>`).join("")}</ul>`
-    : "Looks great!";
+  const entropy = calculateEntropy(password);
+
+  strengthE1.textContent = label;
+
+  entropyValue.textContent = `Entropy: ${entropy} bits`;
+
+  const maxEntropy = 80;
+  const percentage = Math.min((entropy / maxEntropy) * 100, 100);
+  bar.style.width = percentage + "%";
+
+  if (entropy < 40) {
+    bar.style.backgroundColor = "red";
+  } else if (entropy < 60) {
+    bar.style.backgroundColor = "orange";
+  } else {
+    bar.style.backgroundColor = "green";
+  }
+
+  if (suggestions.length > 0) {
+    suggestionsEl.innerHTML =
+      `<strong>Suggestions:</strong>
+      <ul>${suggestions.map(s => `<li>${s}</li>`).join("")}</ul>`;
+  }else {
+    suggestionsE1.textContent = "Looks great!";
+  }
 }
 
 function saveResult(label, suggestions) {
@@ -93,18 +135,14 @@ function loadLastResult() {
   );
 }
 
-function maskPassword(pwd) {
-  if (pwd.length <= 2) return "*".repeat(pwd.length);
-  return pwd[0] + "*".repeat(pwd.length - 2) + pwd[pwd.length - 1];
-}
-
-function saveToHistory(password, label) {
+function saveToHistory(hash, label, length) {
   chrome.storage.local.get(["history"], (data) => {
     const history = data.history || [];
 
     history.push({
-      masked: maskPassword(password),
+      hash: hash,
       strength: label,
+      length: length,
       time: new Date().toLocaleString()
     });
 
@@ -122,10 +160,24 @@ function loadHistory() {
     history.forEach(entry => {
       const li = document.createElement("li");
       li.innerHTML = `
-        <strong>${entry.masked}</strong> — ${entry.strength} <br>
+        <strong>${entry.length} characters</strong> — ${entry.strength} <br>
         <small>${entry.time}</small>
       `;
       list.appendChild(li);
     });
   });
+}
+
+function calculateEntropy(password) {
+  let charsetSize = 0;
+
+  if (/[a-z]/.test(password)) charsetSize += 26;
+  if (/[A-Z]/.test(password)) charsetSize += 26;
+  if (/[0-9]/.test(password)) charsetSize += 10;
+  if (/[^A-Za-z0-9]/.test(password)) charsetSize += 32;
+
+  if (charsetSize === 0) return 0;
+
+  const entropy = password.length * Math.log2(charsetSize);
+  return Math.round(entropy);
 }
