@@ -1,5 +1,5 @@
 body {
-  font-family: Ariel, sans-sarif;
+  font-family: Arial, sans-serif;
   padding: 10px;
   width: 250px;
 }
@@ -28,7 +28,7 @@ button {
 }
 
 button:hover {
-  background-color: dark lightblue;
+  background-color: lightblue;
 }
 
 #result {
@@ -52,7 +52,7 @@ button:hover {
   font-size: 14px;
 }
 
-.entropy-container {
+.entropyContainer {
   width: 100%;
   height: 12px;
   background-color: #ddd;

@@ -8,7 +8,8 @@
 		const wrapper = document.createElement("div");
 		wrapper.style.position = "relative";
 		wrapper.style.display = "inline-block";
-		wrapper.style.width = input.offsetWidth + "px";
+		wrapper.style.width = "100%";
+		wrapper.style.overflow = "visible";
 
 		input.parentNode.insertBefore(wrapper, input);
 		wrapper.appendChild(input);
@@ -23,11 +24,11 @@
 		bubble.appendChild(img);
 		bubble.style.right = "8px";
 		bubble.style.top = "50%";
-		bubble.style.transform = "translate(-50%)";
+		bubble.style.transform = "translateY(-50%)";
 
 		wrapper.appendChild(bubble);
 
-		input.style.paddingRight = "32px";
+		input.style.paddingRight = "42px";
 
 		bubble.addEventListener("click", () => {
 			chrome.runtime.sendMessage({ action: "openPopup" });		});
