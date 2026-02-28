@@ -23,12 +23,14 @@ document.addEventListener("DOMContentLoaded", () => {
   checkBtn.addEventListener("click", async () => {
     const password = passwordInput.value;
     const result = evaluatePassword(password);
-    displayResults(password, result);
     const hash = await hashPassword(password);
+
     if (COMMON_PASSWORD_HASHES.has(hash)) {
       result.label = "Very Weak";
       result.suggestions.push("This password is extremely common and easily guessed.");
     }
+
+    displayResults(password, result);
     saveResult(result.label, result.suggestions);
     saveToHistory(hash, result.label, password.length);
     loadHistory();
