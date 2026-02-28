@@ -7,6 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const passwordInput = document.getElementById("passwordInput");
   const clearHistoryBtn = document.getElementById("clearHistory");
 
+  passwordInput.addEventListener("input", () => {
+    const password = passwordInput.value;
+
+    if (!password) {
+      document.getElementById("entropyBar").style.width = "0%";
+      document.getElementById("entropyValue").textContent = "";
+      return;
+    }
+
+    const result = evaluatePassword(password);
+    displayResults(password, result);
+  });
+
   checkBtn.addEventListener("click", async () => {
     const password = passwordInput.value;
     const result = evaluatePassword(password);
@@ -97,7 +110,7 @@ function displayResults(password, { label, suggestions }) {
       `<strong>Suggestions:</strong>
       <ul>${suggestions.map(s => `<li>${s}</li>`).join("")}</ul>`;
   }else {
-    suggestionsE1.textContent = "Looks great!";
+    suggestionsEl.textContent = "Looks great!";
   }
 }
 

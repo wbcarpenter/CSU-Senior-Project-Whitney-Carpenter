@@ -30,15 +30,12 @@
 		input.style.paddingRight = "32px";
 
 		bubble.addEventListener("click", () => {
-			chrome.runtime.sendMessage({ action: "openPopup" });
-		});
+			chrome.runtime.sendMessage({ action: "openPopup" });		});
 	}
 
 	function checkForPasswordFields() {
-		console.log("Checking for password field...");
 		const inputs = document.querySelectorAll("input[type='password']");
 		inputs.forEach(createBubble);
-		console.log("Found password:", !!hasPassword);
 	}
 
 	checkForPasswordFields();

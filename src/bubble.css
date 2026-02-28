@@ -1,8 +1,8 @@
 #securepass-bubble {
     all: initial;
 	position: absolute;
-    width: 24px;
-    height: 24px;
+    width: 42px;
+    height: 42px;
     background: black;
     border-radius: 50%;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
