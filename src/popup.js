@@ -99,13 +99,7 @@ function displayResults(password, { label, suggestions }) {
   const percentage = Math.min((entropy / maxEntropy) * 100, 100);
   bar.style.width = percentage + "%";
 
-  if (entropy < 40) {
-    bar.style.backgroundColor = "red";
-  } else if (entropy < 60) {
-    bar.style.backgroundColor = "orange";
-  } else {
-    bar.style.backgroundColor = "green";
-  }
+  bar.style.background = entropyToColor(entropy);
 
   if (suggestions.length > 0) {
     suggestionsEl.innerHTML =
@@ -195,4 +189,48 @@ function calculateEntropy(password) {
 
   const entropy = password.length * Math.log2(charsetSize);
   return Math.round(entropy);
+}
+
+function interpolateColor(color1, color2, factor) {
+  const c1 = parseInt(color1.slice(1), 16);
+  const c2 = parseInt(color2.slice(1), 16);
+
+  const r1 = (c1 >> 16) & 0xff;
+  const g1 = (c1 >> 8) & 0xff;
+  const b1 = c1 & 0xff;
+
+  const r2 = (c2 >> 16) & 0xff;
+  const g2 = (c2 >> 8) & 0xff;
+  const b2 = c2 & 0xff;
+
+  const r = Math.round(r1 + (r2 - r1) * factor);
+  const g = Math.round(g1 + (g2 - g1) * factor);
+  const b = Math.round(b1 + (b2 - b1) * factor);
+
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+function entropyToColor(entropy) {
+  const maxEntropy = 80;
+  const percent = Math.min(entropy / maxEntropy, 1);
+
+  const stops = [
+    { pct: 0.00, color: "#ff0000" }, // red
+    { pct: 0.25, color: "#ff7f00" }, // orange
+    { pct: 0.50, color: "#ffff00" }, // yellow
+    { pct: 0.75, color: "#00ff00" }, // green
+    { pct: 1.00, color: "#008000" }  // dark green
+  ];
+
+  for (let i = 0; i < stops.length - 1; i++) {
+    const start = stops[i];
+    const end = stops[i + 1];
+
+    if (percent >= start.pct && percent <= end.pct) {
+      const range = (percent - start.pct) / (end.pct - start.pct);
+      return interpolateColor(start.color, end.color, range);
+    }
+  }
+
+  return stops[stops.length - 1].color;
 }

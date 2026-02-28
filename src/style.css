@@ -27,7 +27,7 @@ button {
   border-radius: 4px;
 }
 
-button:hover {
+button:hover:not(:active) {
   background-color: lightblue;
 }
 
@@ -65,7 +65,7 @@ button:hover {
 #entropyBar {
   height: 100%;
   width: 0%;
-  background-color: green;
+  background: linear-gradient(to right, red, orange, yellow, green);
   border-radius: 6px;
   transition: width 0.3s ease;
 }
